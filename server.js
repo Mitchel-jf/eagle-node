@@ -13,7 +13,7 @@ let client = new Client({
     strictSSL: false
 })
 
-app.post('/receive_btc', (req, res) => {
+app.post('/receive_btc_from_user', (req, res) => {
     client.getAccount('primary', async (err, acct) => {
         if (err)
             return res.status(500).send(`there was an error:\n ${err}`)
@@ -28,7 +28,7 @@ app.post('/receive_btc', (req, res) => {
     })
 })
 
-app.post('/send_btc', (req, res) => {
+app.post('/send_btc_to_user', (req, res) => {
     client.getAccount('primary', (err, acct) => {
         acct.sendMoney({
             to: req.body.address,
